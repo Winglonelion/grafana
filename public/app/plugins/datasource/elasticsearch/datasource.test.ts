@@ -31,11 +31,6 @@ describe('ElasticDatasource', function(this: any) {
     jest.clearAllMocks();
   });
 
-  const $rootScope = {
-    $on: jest.fn(),
-    appEvent: jest.fn(),
-  };
-
   const templateSrv: any = {
     replace: jest.fn(text => {
       if (text.startsWith('$')) {
@@ -49,9 +44,9 @@ describe('ElasticDatasource', function(this: any) {
 
   const timeSrv: any = createTimeSrv('now-1h');
 
-  const ctx = {
-    $rootScope,
-  } as any;
+  const ctx: {
+    ds: ElasticDatasource;
+  } = {};
 
   function createTimeSrv(from: string) {
     const srv: any = {

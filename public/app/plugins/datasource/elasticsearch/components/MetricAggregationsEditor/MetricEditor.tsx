@@ -58,7 +58,7 @@ const getTypeOptions = (
 };
 
 export const MetricEditor: FunctionComponent<Props> = ({ value }) => {
-  const styles = getStyles(useTheme(), value.hide);
+  const styles = getStyles(useTheme(), !!value.hide);
   const datasource = useDatasource();
   const query = useQuery();
   const dispatch = useDispatch<MetricAggregationAction>();
@@ -107,7 +107,7 @@ export const MetricEditor: FunctionComponent<Props> = ({ value }) => {
 
       {isMetricAggregationWithSettings(value) && <SettingsEditor metric={value} previousMetrics={previousMetrics} />}
 
-      <ToggleVisibilityButton onClick={() => dispatch(toggleMetricVisibility(value.id))} hide={value.hide} />
+      <ToggleVisibilityButton onClick={() => dispatch(toggleMetricVisibility(value.id))} hide={!!value.hide} />
     </QueryEditorRow>
   );
 };

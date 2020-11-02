@@ -27,6 +27,25 @@ export type MetricAggregationType =
   | 'logs'
   | PipelineMetricAggregationType;
 
+export const isMetricAggregationType = (s: MetricAggregationType | string): s is MetricAggregationType =>
+  [
+    'count',
+    'avg',
+    'sum',
+    'min',
+    'max',
+    'extended_stats',
+    'percentiles',
+    'cardinality',
+    'raw_document',
+    'raw_data',
+    'logs',
+    'moving_avg',
+    'derivative',
+    'cumulative_sum',
+    'bucket_script',
+  ].includes(s);
+
 export interface PipelineVariable {
   name: string;
   pipelineAgg: string;
@@ -35,7 +54,7 @@ export interface PipelineVariable {
 interface BaseMetricAggregation {
   id: string;
   type: MetricAggregationType;
-  hide: boolean;
+  hide?: boolean;
 }
 
 export interface MetricAggregationWithField extends BaseMetricAggregation {
@@ -93,7 +112,7 @@ interface Min extends MetricAggregationWithField, MetricAggregationWithInlineScr
   };
 }
 
-type ExtendedStatMetaType =
+export type ExtendedStatMetaType =
   | 'avg'
   | 'min'
   | 'max'
