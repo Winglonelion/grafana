@@ -1,6 +1,6 @@
 import { DataQuery, DataSourceJsonData } from '@grafana/data';
 import { BucketAggregation, BucketAggregationType } from './components/BucketAggregationsEditor/state/types';
-import { MetricAggregation, MetricAggregationType } from './components/MetricAggregationsEditor/state/types';
+import { MetricAggregation, MetricAggregationType } from './components/MetricAggregationsEditor/aggregations';
 
 export interface ElasticsearchOptions extends DataSourceJsonData {
   timeField: string;

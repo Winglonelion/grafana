@@ -4,7 +4,7 @@ import {
   isPipelineAggregationWithMultipleBucketPaths,
   MetricAggregation,
   PipelineMetricAggregationType,
-} from './state/types';
+} from './aggregations';
 
 // We can probably split Pipeline Aggregations from here.
 // TODO: hasSettings can probably be removed as it can be inferred
